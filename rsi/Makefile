@@ -30,7 +30,7 @@
 
 SUPP_DIR=$(PWD)/supplicant
 KERNELRELEASE=$(shell uname -r)
-KERNELDIR=/lib/modules/$(KERNELRELEASE)/build
+KDIR ?= /lib/modules/$(KERNELRELEASE)/build
 
 # uncomment below line for Caracalla board
 #CONFIG_CARACALLA_BOARD=y
@@ -173,7 +173,7 @@ rsi_91x-objs := $(RSI_91X_OBJS)
 
 all:
 	@echo -e "\033[32mCompiling RSI drivers...\033[0m"
-	make -C$(KERNELDIR)/ M=$(PWD) modules
+	make -C $(KDIR)/ M=$(PWD) modules
 
 clean:
-	make -C$(KERNELDIR)/ M=$(PWD) clean
+	make -C $(KDIR)/ M=$(PWD) clean
