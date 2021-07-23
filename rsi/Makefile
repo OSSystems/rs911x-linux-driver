@@ -175,5 +175,9 @@ all:
 	@echo -e "\033[32mCompiling RSI drivers...\033[0m"
 	make -C $(KDIR)/ M=$(PWD) modules
 
+install:
+	$(MAKE) -C $(KDIR) M=$(PWD) modules_install INSTALL_MOD_PATH=$(DESTDIR) \
+		O=$(O) V=$(V)
+
 clean:
 	make -C $(KDIR)/ M=$(PWD) clean
